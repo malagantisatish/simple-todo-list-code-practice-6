@@ -3,6 +3,7 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  width: 100%;
 }
 
 .todo-title {
@@ -10,6 +11,7 @@
   padding: 10px;
   margin: 5px;
   font-family: 'Roboto';
+  width: 60%;
 }
 
 .delete-btn {
@@ -20,4 +22,27 @@
   border-color: #ff0b37;
   color: #ff0b37;
   margin: 10px;
+}
+
+.editng-title-input {
+  width: 60%;
+  height: 40px;
+  border-width: 2px;
+  border-radius: 4px;
+  border-color: #ff0b37;
+  font-family: bold;
+}
+
+.todo-item-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.checked {
+  text-decoration: line-through;
+}
+
+..not-checked {
+  text-decoration: none;
 }
