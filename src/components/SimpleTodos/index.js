@@ -61,10 +61,36 @@ class SimpleTodos extends Component {
 
   addToTodoList = () => {
     const {inputValue} = this.state
-    const todoItem = {title: inputValue, id: uuidv4(), isChecked: false}
-    this.setState(prevState => ({
-      todoListItems: [...prevState.todoListItems, todoItem],
-    }))
+
+    const inputToList = inputValue.split(' ')
+    console.log(inputToList)
+    const lastNumber = parseInt(inputToList[inputToList.length - 1])
+    console.log(lastNumber)
+    if (typeof lastNumber === 'number') {
+      const title = inputToList.splice(0, inputToList.length - 1).join(' ')
+
+      const newArray = Array.from({length: lastNumber}, (_, index) => index + 1)
+
+      const newTodoList = newArray.map(each => ({
+        title,
+        id: uuidv4(),
+        isChecked: false,
+      }))
+
+      this.setState(prevState => ({
+        todoListItems: [...prevState.todoListItems, ...newTodoList],
+      }))
+    } else {
+      const todoItem = {
+        title: inputValue,
+        id: uuidv4(),
+        isChecked: false,
+      }
+
+      this.setState(prevState => ({
+        todoListItems: [...prevState.todoListItems, todoItem],
+      }))
+    }
   }
 
   deleteTodoItem = id => {
